@@ -1,0 +1,577 @@
+@font-face {
+    font-family: 'ThecircleM';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/ThecircleM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BRBELRT0';
+    src: url('BRBELRT0.TTF');
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    cursor: url('star.png'), auto;
+    font-family: 'Pretendard-Regular';
+}
+
+
+
+  .text {
+    position: absolute;
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none; /* 텍스트가 다른 요소와 겹쳐도 클릭되지 않도록 */
+    font-family: 'ThecircleM';
+  }
+
+#symbol{
+    width: 10%;
+    position:absolute;
+    top: -1vh;
+    z-index: 999;
+    left: 45vw;
+}
+
+#symbol:hover{
+    transform: scale(1.2)
+}
+
+#click1 {
+    font-family: 'Pretendard';
+    color: white;
+    position: relative;
+    top: 17vh;
+    opacity: 0; /* 초기 상태에서는 보이지 않음 */
+    animation: fadeInOut 3s infinite;
+}
+
+/* 이미지에 호버 시 커서 크기 변화 및 빛나는 효과 적용 */
+.letterclick:hover,
+#click1:hover,
+img:hover {
+    cursor: url('star1.png'), auto; /* 호버 시 star1.png로 변경 */
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0.3; /* 30% 불투명도 */
+    }    50% {
+        opacity: 0.8; /* 100% 불투명도 */
+    }    100% {
+        opacity: 0.3; /* 30% 불투명도 */
+    }
+}
+
+
+.section{
+       width: 100vw;
+        height: 10vh;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #bg-video{
+        position: fixed;
+        top:0;
+        left:0;
+        z-index: -1;
+    }
+
+    #symbol1{
+        width: 10%;
+        position:fixed;
+        z-index: 999;
+        top:3%;;
+        left: 3%;
+    }
+
+    #container {
+        position: fixed;
+        top:0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+    }
+    .star {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        animation: fadeIn 2s forwards;
+    }
+
+    /* 선 스타일 */
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    line {
+        stroke: #fff;
+        stroke-width: 0.33;
+        stroke-dasharray: 100; /* 선을 점선처럼 시작 */
+        stroke-dashoffset: 100;
+        opacity: 0; /* 처음에 안 보이게 */
+            animation: drawLine 1s ease-in-out forwards, fadeInLine 0.5s forwards;
+        }
+
+        /* 애니메이션 */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes drawLine {
+            from {
+                stroke-dasharray: 0, 100%; /* 선이 보이지 않음 */
+            }
+            to {
+                stroke-dasharray: 100%, 0; /* 실선으로 나타남 */
+            }
+        }
+
+        @keyframes fadeInLine {
+            to {
+                opacity: 1; /* 선이 보이게 */
+            }
+        }
+
+.popup{
+    display: none;
+    width: 450px;
+    height:450px;
+    position: fixed;
+    top:20%;
+    left:37%;
+    border: 2px solid;
+    border-radius: 30px;
+    transition: box-shadow 0.3s ease;
+    z-index: 10;
+}
+.visible {
+    display: block;
+}
+.popup:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .background-dim {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .background-dim.active {
+    display: block;
+  }
+
+  #bg-video-2 {
+    position: fixed;
+    top: 48%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+    width:1920px;
+    z-index: -1;
+}
+.web2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#addlet {
+    font-family: 'ThecircleM';
+    text-align: center;
+    font-size: 1.2rem;
+    z-index: 0;
+}
+
+.letterclick {
+    position: fixed;
+    bottom: 20%;
+    left: 50%; /* 가로 중앙 위치 */
+    transform: translateX(-50%); /* 너비의 절반 만큼 좌측으로 이동 */
+    width: 120px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border-radius: 50px;
+    border: 2px solid;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 1rem;
+    z-index: 5;
+    transition: transform 0.3s ease; /* 부드러운 확대 효과 */
+}
+
+.letterclick:hover {
+    transform: translateX(-50%) scale(1.2); /* 크기 확대와 이동을 함께 적용 */
+    transform-origin: center; /* 확대 기준점을 가운데로 설정 */
+    color: #52aa80;
+}
+
+/* 팝업의 초기 상태는 숨김 */
+.letter-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 6;
+    font-family: 'Pretendard-Regular';
+}
+
+.popup-content {
+    background-color:#eff0ee;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 400px;
+    font-family: 'Pretendard-Regular';
+
+}
+
+h3 {      font-family: 'BRBELRT0';
+    font-size: 2rem;
+    margin-bottom: 10px;
+    word-spacing: -0.1rem;
+}
+
+p {     font-family: 'Pretendard-Regular';
+    font-size: 16px;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+textarea[type="text"] {
+    width: 350px;
+    height: 100px;
+    padding-top: 10px;;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: 'Pretendard-Regular';
+}
+
+.checkbox-group {
+    margin-bottom: 6px;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    margin-bottom: 5px;;
+}
+
+.checkbox-group input[type="radio"] {
+    display: none;
+}
+
+.checkbox-group input[type="radio"]:checked + label {
+    background-color: #52aa80;
+    border-color: #006400;
+    color: white;
+}
+
+.checkbox-group label:hover {
+    background-color: #e6ffe6;
+    border-color: #008000;
+}
+
+.button-group button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#saveButton {
+    background-color: #52aa80;
+    color: white;
+}
+
+#closePopup {
+    background-color: #707070;
+    color: white;
+}
+
+#saveButton:hover {
+    background-color: #52aa80;
+}
+
+#closePopup:hover {
+    background-color: #707070;
+}
+
+/* gif-container 스타일 */
+.gif-container {
+    text-align: center;
+    color:#707070;
+    width: 500px;
+    height:300px;
+    position: fixed;
+    top:30%;
+    left:33%;
+    z-index: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap:30px;
+    justify-content: center; /* 이미지가 중앙에 배치되도록 설정 */
+    align-items: flex-start; /* 이미지가 상단 정렬되도록 설정 */
+    position: relative; /* 이미지 위치를 랜덤하게 설정할 때 필요 */
+}
+
+.gif-container img {
+    width: 35px;
+    display: block;
+    margin: 0 auto;
+}
+/* 기존 팝업 스타일 */
+
+.gif-container img:hover{
+    transform: scale(1.1);
+}
+
+/* 편지 보기 팝업 스타일 */
+.letter-view-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.letter-view-popup .popup-content {
+    background-color: #eff0ee;
+    margin: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 400px;
+}
+
+.popup-content {
+    justify-content: center;
+}
+
+.popupcontent h3{
+    padding-bottom: 30px;
+    font-size: 1rem;
+}
+
+#viewLetterContent, #viewSaveTime {
+    font-size: 16px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    font-size: 1rem;
+}
+
+#viewLetterContent{
+    width: 80%;
+    text-align: left;  /* 텍스트 왼쪽 정렬 */
+  word-wrap: break-word;  /* 단어가 길어지면 줄바꿈 */
+  overflow-wrap: break-word;  /* 동일한 기능을 제공 */
+ position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  line-height: 1.5;
+  font-family: 'Pretendard-Regular';
+}
+
+#closeLetterViewPopup {
+    padding: 8px 15px;
+    background-color: #828282;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+#closeLetterViewPopup:hover {
+    background-color: #828282;
+}
+
+/* 비공개 비밀번호 입력란 */
+#privatePasswordSection {
+    margin-bottom: 10px;
+}
+
+#privatePassword {
+    width: 250px;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#viewPassword {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#viewLetterButton {
+    padding: 10px 20px;
+    background-color: #52aa80;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#viewLetterButton:hover {
+    background-color: #52aa80;
+}
+
+#timeOptions {
+    display: none;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    text-align: center; /* 가운데 정렬 */
+}
+#timeOptions label {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 3px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+#timeOptions input[type="radio"] {
+    display: none;
+}
+
+#timeOptions input[type="radio"]:checked + span {
+    color:#008000;
+}
+
+#timeOptions label:hover {
+    background-color: #e6ffe6;
+    border-color: #52aa80;
+}
+
+
+
+
+.nextbtn {    width: 20px;
+    transition: transform 2s ease, /* 부드러운 애니메이션 효과 */
+}
+.nextbtn:hover {
+    transform: scale(1.5); /* 버튼 크기 확대 */
+}
+
+#nexttree1{
+    position: fixed;
+    left:5%;
+    top: 45%;
+}
+
+#nexttree2{
+    position: fixed;
+    right:5%;
+    top: 45%;
+}
+
+
+.hidden-text-box {
+    position: relative; /* 이미지와 텍스트를 같은 박스 안에 위치시키기 위해 설정 */
+    top: 45%;
+}
+
+#hidden-text1 {
+/* 기본적으로 텍스트는 숨겨둡니다. */
+    color: black;
+    position: absolute;
+    font-size: 1.5rem;
+    margin-top: 15px;
+    left:7%;
+    opacity: 0; /* 처음엔 투명하게 설정 */
+    transition: opacity 2s ease-in-out; /* 서서히 나타나도록 애니메이션 설정 */
+    font-family: 'ThecircleM'
+}
+
+#hidden-text2 {/* 기본적으로 텍스트는 숨겨둡니다. */
+    color: black;
+    position: absolute;
+    font-size: 1.5rem;
+    margin-top: 15px;
+    right: 7%;
+    opacity: 0; /* 처음엔 투명하게 설정 */
+    transition: opacity 2s ease-in-out; /* 서서히 나타나도록 애니메이션 설정 */
+        font-family: 'ThecircleM'
+}
+
+#nexttree1:hover + #hidden-text1,
+#nexttree2:hover + #hidden-text2 {
+/* 이미지에 호버하면 텍스트가 나타나도록 */
+    opacity: 1;
+}
